@@ -13,12 +13,15 @@ JOKE = "I asked my mirror for an honest opinion; it filed a restraining order."
 
 OUTPUT_PATH = "/output/entry.txt"
 
+# Grader reads the file as-is: world-readable so any checker can open it.
+OUTPUT_MODE = 0o644
+
 
 def main() -> None:
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8", newline="") as f:
         f.write(JOKE)
-    os.chmod(OUTPUT_PATH, 0o644)
+    os.chmod(OUTPUT_PATH, OUTPUT_MODE)
 
 
 if __name__ == "__main__":
